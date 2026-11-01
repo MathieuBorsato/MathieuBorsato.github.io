@@ -9,6 +9,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== Language menu ===== */
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .lang-select-wrap { position: relative; display: inline-flex; align-items: center; }
+    .lang-select {
+      appearance: none; -webkit-appearance: none;
+      font: inherit; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;
+      color: var(--white); background-color: var(--navy-light);
+      border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+      padding: 7px 30px 7px 12px; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 10px center; background-size: 10px 7px;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    .lang-select:hover { border-color: rgba(255, 255, 255, 0.55); }
+    .lang-select:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+    .lang-select option { color: var(--text); background: var(--white); }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .nav-logo, .nav-link { white-space: nowrap; }
+    /* Medium screens: tighter spacing so every menu item stays on one line (the longer French labels included) */
+    @media (min-width: 1025px) and (max-width: 1240px) {
+      .nav-links { gap: 2px; }
+      .nav-link { padding: 8px 7px; font-size: 0.78rem; }
+      .nav-right { gap: 10px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,18 +43,29 @@
     <div class="nav-container">
       <a href="#welcome" class="nav-logo">Mathieu <strong>Borsato</strong></a>
 
+      <div class="nav-right">
+      <nav class="nav-links" id="navLinks">
+        <a href="#welcome" class="nav-link active" data-fr="Accueil">Welcome</a>
+        <a href="#engineering" class="nav-link" data-fr="Formation d&#x27;ingénieur">Engineering Course</a>
+        <a href="#mobility" class="nav-link" data-fr="Mobilité internationale">International Mobility</a>
+        <a href="#engagement" class="nav-link" data-fr="Engagement citoyen">Civic Engagement</a>
+        <a href="#activities" class="nav-link" data-fr="Sports &amp;amp; activités">Sports &amp; Activities</a>
+        <a href="#career" class="nav-link" data-fr="Carrière">Career</a>
+      </nav>
+
+      <!-- LANGUAGE MENU: English is the default; French texts are stored in the data-fr attributes -->
+      <label class="lang-select-wrap" for="langSelect">
+        <span class="visually-hidden">Language</span>
+        <select id="langSelect" class="lang-select" aria-label="Language / Langue">
+          <option value="en" selected>EN</option>
+          <option value="fr">FR</option>
+        </select>
+      </label>
+
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-
-      <nav class="nav-links" id="navLinks">
-        <a href="#welcome" class="nav-link active">Welcome</a>
-        <a href="#engineering" class="nav-link">Engineering Course</a>
-        <a href="#mobility" class="nav-link">International Mobility</a>
-        <a href="#engagement" class="nav-link">Civic Engagement</a>
-        <a href="#activities" class="nav-link">Sports &amp; Activities</a>
-        <a href="#career" class="nav-link">Career</a>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -40,38 +77,38 @@
       <div class="hero-grid">
         <div class="hero-photo-wrapper">
           <!-- Profile photo: replace the file "photo profile.jpg" to change it -->
-          <img src="photo%20profile.jpg" alt="Portrait of Mathieu Borsato" class="hero-photo">
+          <img src="photo%20profile.jpg" alt="Portrait of Mathieu Borsato" data-fr-alt="Portrait de Mathieu Borsato" class="hero-photo">
         </div>
         <div class="hero-text">
           <p class="hero-kicker">ENSEEIHT · INP Toulouse</p>
           <h1>Mathieu <strong>Borsato</strong></h1>
-          <p class="hero-subtitle">Electrical Engineering Student (3EA)</p>
-          <p>Welcome to my e-portfolio! I am Mathieu Borsato, a first-year Electrical Engineering (3EA) student at ENSEEIHT in Toulouse. With a strong interest in system design, I am eager to apply my theoretical knowledge in a practical and industrial setting.</p>
-          <p>I created this digital portfolio as a personal showcase to document my academic and professional journey over my three years of engineering studies. Its purpose is to highlight my technical projects, my career development and my international mobility plans, as well as my civic engagement and extracurricular activities.</p>
-          <p class="highlight">I am currently seeking a 6-week internship in electronics, starting in June 2027, to discover the industrial sector.</p>
-          <p>Feel free to explore my work, view my CV, and connect with me!</p>
+          <p class="hero-subtitle" data-fr="Élève ingénieur en génie électrique (3EA)">Electrical Engineering Student (3EA)</p>
+          <p data-fr="Bienvenue sur mon e-portfolio ! Je m&#x27;appelle Mathieu Borsato et je suis élève ingénieur en première année du département Électronique, Énergie électrique et Automatique (3EA) à l&#x27;ENSEEIHT, à Toulouse. Passionné par la conception de systèmes, j&#x27;ai à cœur de mettre mes connaissances théoriques en pratique dans un cadre industriel.">Welcome to my e-portfolio! I am Mathieu Borsato, a first-year Electrical Engineering (3EA) student at ENSEEIHT in Toulouse. With a strong interest in system design, I am eager to apply my theoretical knowledge in a practical and industrial setting.</p>
+          <p data-fr="J&#x27;ai créé ce portfolio numérique pour retracer mon parcours académique et professionnel tout au long de mes trois années d&#x27;école d&#x27;ingénieur. Il présente mes projets techniques, mon projet professionnel et mes projets de mobilité internationale, ainsi que mon engagement citoyen et mes activités extrascolaires.">I created this digital portfolio as a personal showcase to document my academic and professional journey over my three years of engineering studies. Its purpose is to highlight my technical projects, my career development and my international mobility plans, as well as my civic engagement and extracurricular activities.</p>
+          <p class="highlight" data-fr="Je recherche actuellement un stage de 6 semaines en électronique, à partir de juin 2027, pour découvrir le monde industriel.">I am currently seeking a 6-week internship in electronics, starting in June 2027, to discover the industrial sector.</p>
+          <p data-fr="N&#x27;hésitez pas à découvrir mes travaux, à consulter mon CV et à me contacter !">Feel free to explore my work, view my CV, and connect with me!</p>
           <div class="hero-actions">
-            <a href="#career" class="btn btn-primary">View my CV</a>
-            <a href="#engineering" class="btn btn-outline">Explore my work</a>
+            <a href="#career" class="btn btn-primary" data-fr="Voir mon CV">View my CV</a>
+            <a href="#engineering" class="btn btn-outline" data-fr="Découvrir mes travaux">Explore my work</a>
           </div>
         </div>
       </div>
 
       <!-- Skills & Languages -->
       <div class="skills">
-        <h2 class="skills-title">Skills</h2>
+        <h2 class="skills-title" data-fr="Compétences">Skills</h2>
         <div class="skills-grid">
           <div class="skills-col">
-            <h3>Electronics &amp; Engineering</h3>
+            <h3 data-fr="Électronique &amp;amp; ingénierie">Electronics &amp; Engineering</h3>
             <ul>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M2 12h4l2-5 4 10 2-5h8"/></svg>Circuit analysis</li>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0M12 18l4-6"/><circle cx="12" cy="18" r="1"/></svg>Physical measurements</li>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M6 13c1.5-6 3-6 4.5 0s3 6 4.5 0M8 21h8"/></svg>Instrumentation</li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M2 12h4l2-5 4 10 2-5h8"/></svg><span data-fr="Analyse de circuits">Circuit analysis</span></li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0M12 18l4-6"/><circle cx="12" cy="18" r="1"/></svg><span data-fr="Mesures physiques">Physical measurements</span></li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M6 13c1.5-6 3-6 4.5 0s3 6 4.5 0M8 21h8"/></svg><span data-fr="Instrumentation">Instrumentation</span></li>
               <li><img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/matlab/matlab-original.svg" alt="">Matlab</li>
             </ul>
           </div>
           <div class="skills-col">
-            <h3>IT &amp; Programming</h3>
+            <h3 data-fr="Informatique &amp;amp; programmation">IT &amp; Programming</h3>
             <ul>
               <li><img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="">Python</li>
               <li><img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/c/c-original.svg" alt="">C</li>
@@ -79,28 +116,28 @@
             </ul>
           </div>
           <div class="skills-col">
-            <h3>Soft Skills</h3>
+            <h3 data-fr="Savoir-être">Soft Skills</h3>
             <ul>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.4.6 4 2.8 4 6"/></svg>Teamwork</li>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Rigor</li>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5zM6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg>Teaching skills</li>
-              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 4v3h3M4 13a8 8 0 0 0 14.5 4.5M20 20v-3h-3"/></svg>Adaptability</li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.4.6 4 2.8 4 6"/></svg><span data-fr="Travail d&#x27;équipe">Teamwork</span></li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><span data-fr="Rigueur">Rigor</span></li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5zM6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg><span data-fr="Pédagogie">Teaching skills</span></li>
+              <li><svg class="skill-icon" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 4v3h3M4 13a8 8 0 0 0 14.5 4.5M20 20v-3h-3"/></svg><span data-fr="Adaptabilité">Adaptability</span></li>
             </ul>
           </div>
           <div class="skills-col">
-            <h3>Languages</h3>
+            <h3 data-fr="Langues">Languages</h3>
             <ul>
               <li>
                 <svg class="flag" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ed2939"/></svg>
-                <span>French <small>Native speaker</small></span>
+                <span data-fr="Français &lt;small&gt;Langue maternelle&lt;/small&gt;">French <small>Native speaker</small></span>
               </li>
               <li>
                 <svg class="flag" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#c8102e" stroke-width="3"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#c8102e" stroke-width="7"/></svg>
-                <span>English <small>Upper Intermediate (B2)</small></span>
+                <span data-fr="Anglais &lt;small&gt;Intermédiaire avancé (B2)&lt;/small&gt;">English <small>Upper Intermediate (B2)</small></span>
               </li>
               <li>
                 <svg class="flag" viewBox="0 0 3 2"><rect width="3" height="2" fill="#aa151b"/><rect y="0.5" width="3" height="1" fill="#f1bf00"/></svg>
-                <span>Spanish <small>Intermediate (B1)</small></span>
+                <span data-fr="Espagnol &lt;small&gt;Intermédiaire (B1)&lt;/small&gt;">Spanish <small>Intermediate (B1)</small></span>
               </li>
             </ul>
           </div>
@@ -112,42 +149,42 @@
     <!-- ===================== 2. ENGINEERING COURSE ===================== -->
     <section id="engineering" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Engineering Course</h2>
-        <p class="lead">I am currently in my first year in the Department of Electronics, Electrical Energy and Automatic Control (3EA) at ENSEEIHT - INP Toulouse. My academic journey is driven by a strong interest in system design, and I am keen to apply my theoretical knowledge in practical, hands-on settings. Through my engineering curriculum, I am developing a solid technical skill set across several fields:</p>
+        <h2 class="section-title" data-fr="Formation d&#x27;ingénieur">Engineering Course</h2>
+        <p class="lead" data-fr="Je suis actuellement en première année du département Électronique, Énergie électrique et Automatique (3EA) de l&#x27;ENSEEIHT - INP Toulouse. Mon parcours est guidé par un fort intérêt pour la conception de systèmes, et j&#x27;aime appliquer mes connaissances théoriques dans des situations concrètes. Ma formation me permet de développer des compétences techniques solides dans plusieurs domaines :">I am currently in my first year in the Department of Electronics, Electrical Energy and Automatic Control (3EA) at ENSEEIHT - INP Toulouse. My academic journey is driven by a strong interest in system design, and I am keen to apply my theoretical knowledge in practical, hands-on settings. Through my engineering curriculum, I am developing a solid technical skill set across several fields:</p>
 
         <div class="card-grid two-cols">
           <article class="card">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <h3>Electronics &amp; Engineering</h3>
-            <p>I am building a solid foundation in circuit analysis, physical measurements and instrumentation, and I am becoming proficient in technical computing software such as Matlab.</p>
-            <ul class="tags"><li>Circuit analysis</li><li>Instrumentation</li><li>Measurements</li><li>Matlab</li></ul>
+            <h3 data-fr="Électronique &amp;amp; ingénierie">Electronics &amp; Engineering</h3>
+            <p data-fr="J&#x27;acquiers des bases solides en analyse de circuits, en mesures physiques et en instrumentation, et je maîtrise de mieux en mieux les logiciels de calcul scientifique comme Matlab.">I am building a solid foundation in circuit analysis, physical measurements and instrumentation, and I am becoming proficient in technical computing software such as Matlab.</p>
+            <ul class="tags"><li data-fr="Analyse de circuits">Circuit analysis</li><li>Instrumentation</li><li data-fr="Mesures">Measurements</li><li>Matlab</li></ul>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
             </div>
-            <h3>IT &amp; Programming</h3>
-            <p>I have acquired strong programming skills and am comfortable working with Python, C and SQL.</p>
+            <h3 data-fr="Informatique &amp;amp; programmation">IT &amp; Programming</h3>
+            <p data-fr="J&#x27;ai acquis de solides compétences en programmation et je suis à l&#x27;aise avec Python, C et SQL.">I have acquired strong programming skills and am comfortable working with Python, C and SQL.</p>
             <ul class="tags"><li>Python</li><li>C</li><li>SQL</li></ul>
           </article>
         </div>
 
-        <p class="lead">These theoretical and practical courses are preparing me to tackle complex engineering challenges and are laying the groundwork for my future professional projects in the industrial sector.</p>
+        <p class="lead" data-fr="Ces enseignements théoriques et pratiques me préparent à relever des défis d&#x27;ingénierie complexes et posent les bases de mes futurs projets professionnels dans l&#x27;industrie.">These theoretical and practical courses are preparing me to tackle complex engineering challenges and are laying the groundwork for my future professional projects in the industrial sector.</p>
 
         <!-- Featured project: TIPE -->
         <article class="project">
           <div class="project-media">
-            <img src="maquette.png" alt="3D model of the winding mechanism of an automatic watch" loading="lazy">
+            <img src="maquette.png" alt="3D model of the winding mechanism of an automatic watch" data-fr-alt="Maquette 3D du mécanisme de remontage d'une montre automatique" loading="lazy">
           </div>
           <div class="project-body">
-            <p class="project-label">Research Project (TIPE) · Lycée Bellevue · 2025-2026</p>
-            <h3>Optimization of an Automatic Watch's Winding Parameters</h3>
-            <p>With a fellow student, I studied the self-winding mechanism of an automatic watch, in which the wearer's wrist movements drive an oscillating weight that winds the mainspring through a gear train. We built a simplified macroscopic model of this mechanism and used Python to process our data and identify the parameters that most influence winding efficiency. The 3D model shows the oscillating weight and the gear train.</p>
-            <p><strong>What I learned:</strong> this project was my first experience of a complete scientific approach: defining a problem, choosing relevant simplifying assumptions, building a model and comparing it with data. I learned that a good model is not the most detailed one, but the one whose limits you understand and can justify.</p>
-            <p>Working as a pair taught me to share tasks efficiently, discuss our modeling choices and make joint decisions. On the technical side, I strengthened my skills in mechanical modeling and data processing with Python. Presenting our work also taught me to explain a technical topic concisely and to defend my choices. This experience confirmed my interest in system design, where understanding how components interact matters as much as each component itself.</p>
-            <ul class="tags"><li>Mechanical modeling</li><li>Python</li><li>Data processing</li><li>Teamwork</li></ul>
+            <p class="project-label" data-fr="Projet de recherche (TIPE) · Lycée Bellevue · 2025-2026">Research Project (TIPE) · Lycée Bellevue · 2025-2026</p>
+            <h3 data-fr="Optimisation des paramètres de remontage d&#x27;une montre automatique">Optimization of an Automatic Watch's Winding Parameters</h3>
+            <p data-fr="Avec un camarade, j&#x27;ai étudié le mécanisme de remontage automatique d&#x27;une montre : les mouvements du poignet entraînent une masse oscillante qui remonte le ressort de barillet par l&#x27;intermédiaire d&#x27;un train d&#x27;engrenages. Nous avons construit un modèle macroscopique simplifié de ce mécanisme et utilisé Python pour traiter nos données et identifier les paramètres qui influencent le plus l&#x27;efficacité du remontage. La maquette 3D montre la masse oscillante et le train d&#x27;engrenages.">With a fellow student, I studied the self-winding mechanism of an automatic watch, in which the wearer's wrist movements drive an oscillating weight that winds the mainspring through a gear train. We built a simplified macroscopic model of this mechanism and used Python to process our data and identify the parameters that most influence winding efficiency. The 3D model shows the oscillating weight and the gear train.</p>
+            <p data-fr="&lt;strong&gt;Ce que j&#x27;en retiens :&lt;/strong&gt; ce projet a été ma première expérience d&#x27;une démarche scientifique complète : poser une problématique, choisir des hypothèses simplificatrices pertinentes, construire un modèle et le confronter aux données. J&#x27;ai appris qu&#x27;un bon modèle n&#x27;est pas le plus détaillé, mais celui dont on comprend et sait justifier les limites."><strong>What I learned:</strong> this project was my first experience of a complete scientific approach: defining a problem, choosing relevant simplifying assumptions, building a model and comparing it with data. I learned that a good model is not the most detailed one, but the one whose limits you understand and can justify.</p>
+            <p data-fr="Travailler en binôme m&#x27;a appris à répartir efficacement les tâches, à débattre de nos choix de modélisation et à prendre des décisions communes. Sur le plan technique, j&#x27;ai renforcé mes compétences en modélisation mécanique et en traitement de données avec Python. Présenter notre travail m&#x27;a aussi appris à expliquer un sujet technique de façon concise et à défendre mes choix. Cette expérience a confirmé mon intérêt pour la conception de systèmes, où comprendre les interactions entre composants compte autant que chaque composant lui-même.">Working as a pair taught me to share tasks efficiently, discuss our modeling choices and make joint decisions. On the technical side, I strengthened my skills in mechanical modeling and data processing with Python. Presenting our work also taught me to explain a technical topic concisely and to defend my choices. This experience confirmed my interest in system design, where understanding how components interact matters as much as each component itself.</p>
+            <ul class="tags"><li data-fr="Modélisation mécanique">Mechanical modeling</li><li>Python</li><li data-fr="Traitement de données">Data processing</li><li data-fr="Travail d&#x27;équipe">Teamwork</li></ul>
           </div>
         </article>
       </div>
@@ -156,62 +193,62 @@
     <!-- ===================== 3. INTERNATIONAL MOBILITY ===================== -->
     <section id="mobility" class="section">
       <div class="container">
-        <h2 class="section-title">International Mobility</h2>
-        <p class="lead">As part of my engineering curriculum at ENSEEIHT, I am highly motivated to complete a full academic semester abroad. I have identified three main destinations (the United States, Canada and Australia) that align closely with my academic background in Electrical Engineering (3EA) and my strong interest in system design.</p>
+        <h2 class="section-title" data-fr="Mobilité internationale">International Mobility</h2>
+        <p class="lead" data-fr="Dans le cadre de ma formation à l&#x27;ENSEEIHT, je suis très motivé à l&#x27;idée d&#x27;effectuer un semestre académique complet à l&#x27;étranger. J&#x27;ai identifié trois destinations principales (les États-Unis, le Canada et l&#x27;Australie), en cohérence avec ma formation en génie électrique (3EA) et mon intérêt pour la conception de systèmes.">As part of my engineering curriculum at ENSEEIHT, I am highly motivated to complete a full academic semester abroad. I have identified three main destinations (the United States, Canada and Australia) that align closely with my academic background in Electrical Engineering (3EA) and my strong interest in system design.</p>
 
         <div class="card-grid three-cols">
           <article class="card destination">
             <span class="destination-code">US</span>
-            <h3>United States</h3>
-            <p>The US is a global leader in electronics and technological innovation. Studying there for a semester would give me access to cutting-edge research facilities and advanced courses in circuit analysis and instrumentation, helping me bridge the gap between theoretical knowledge and industrial practice.</p>
+            <h3 data-fr="États-Unis">United States</h3>
+            <p data-fr="Les États-Unis sont un leader mondial de l&#x27;électronique et de l&#x27;innovation technologique. Y étudier un semestre me donnerait accès à des laboratoires de pointe et à des cours avancés en analyse de circuits et en instrumentation, pour faire le lien entre connaissances théoriques et pratique industrielle.">The US is a global leader in electronics and technological innovation. Studying there for a semester would give me access to cutting-edge research facilities and advanced courses in circuit analysis and instrumentation, helping me bridge the gap between theoretical knowledge and industrial practice.</p>
           </article>
           <article class="card destination">
             <span class="destination-code">CA</span>
             <h3>Canada</h3>
-            <p>Known for the excellence of its engineering education and its thriving tech sector, Canada offers an ideal environment to deepen my technical skills, particularly in programming (Python, C) and physical measurements. A semester there would also develop my adaptability in a dynamic, multicultural academic setting.</p>
+            <p data-fr="Reconnu pour l&#x27;excellence de ses formations d&#x27;ingénieur et le dynamisme de son secteur technologique, le Canada offre un cadre idéal pour approfondir mes compétences techniques, notamment en programmation (Python, C) et en mesures physiques. Un semestre là-bas développerait aussi mon adaptabilité dans un environnement universitaire dynamique et multiculturel.">Known for the excellence of its engineering education and its thriving tech sector, Canada offers an ideal environment to deepen my technical skills, particularly in programming (Python, C) and physical measurements. A semester there would also develop my adaptability in a dynamic, multicultural academic setting.</p>
           </article>
           <article class="card destination">
             <span class="destination-code">AU</span>
-            <h3>Australia</h3>
-            <p>Australian universities are renowned for their practical, hands-on approach to engineering. Spending a semester in Australia would allow me to explore new perspectives in electrical energy and automatic control while strengthening my teamwork and cross-cultural communication skills.</p>
+            <h3 data-fr="Australie">Australia</h3>
+            <p data-fr="Les universités australiennes sont réputées pour leur approche très concrète de l&#x27;ingénierie. Un semestre en Australie me permettrait d&#x27;explorer de nouvelles perspectives en énergie électrique et en automatique, tout en renforçant mon travail d&#x27;équipe et ma communication interculturelle.">Australian universities are renowned for their practical, hands-on approach to engineering. Spending a semester in Australia would allow me to explore new perspectives in electrical energy and automatic control while strengthening my teamwork and cross-cultural communication skills.</p>
           </article>
         </div>
 
-        <p class="lead">These three potential mobility projects would expand my international network, challenge my problem-solving abilities and directly support my future career in the industrial sector.</p>
+        <p class="lead" data-fr="Ces trois projets de mobilité élargiraient mon réseau international, mettraient à l&#x27;épreuve ma capacité à résoudre des problèmes et serviraient directement ma future carrière dans l&#x27;industrie.">These three potential mobility projects would expand my international network, challenge my problem-solving abilities and directly support my future career in the industrial sector.</p>
       </div>
     </section>
 
     <!-- ===================== 4. SUSTAINABILITY & CIVIC ENGAGEMENT ===================== -->
     <section id="engagement" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Sustainability &amp; Civic Engagement</h2>
-        <p class="lead">I am deeply committed to taking an active role in my community, both within my school and on broader societal issues.</p>
+        <h2 class="section-title" data-fr="Développement durable &amp;amp; engagement citoyen">Sustainability &amp; Civic Engagement</h2>
+        <p class="lead" data-fr="Je tiens à jouer un rôle actif dans ma communauté, aussi bien au sein de mon école que sur des enjeux de société plus larges.">I am deeply committed to taking an active role in my community, both within my school and on broader societal issues.</p>
 
-        <h3 class="subsection-title">My Active Engagements</h3>
+        <h3 class="subsection-title" data-fr="Mes engagements">My Active Engagements</h3>
         <div class="card-grid two-cols">
           <article class="card">
-            <h4>Student Association (AE ENSEEIHT)</h4>
-            <p>Since September 2026, I have been an active member of the student association, helping to organize student life events and contributing to our campus community.</p>
+            <h4 data-fr="Association des élèves (AE ENSEEIHT)">Student Association (AE ENSEEIHT)</h4>
+            <p data-fr="Depuis septembre 2026, je suis membre actif de l&#x27;association des élèves : j&#x27;aide à organiser les événements de la vie étudiante et je contribue à la vie du campus.">Since September 2026, I have been an active member of the student association, helping to organize student life events and contributing to our campus community.</p>
           </article>
           <article class="card">
-            <h4>Math &amp; Physics Tutor</h4>
-            <p>I provide weekly tutoring in Mathematics and Physics for high school students. This commitment allows me to share my knowledge while developing my adaptability, teaching skills and active listening.</p>
+            <h4 data-fr="Soutien scolaire en maths &amp;amp; physique">Math &amp; Physics Tutor</h4>
+            <p data-fr="Je donne chaque semaine des cours de soutien en mathématiques et en physique à des lycéens. Cet engagement me permet de transmettre mes connaissances tout en développant mon adaptabilité, ma pédagogie et mon écoute.">I provide weekly tutoring in Mathematics and Physics for high school students. This commitment allows me to share my knowledge while developing my adaptability, teaching skills and active listening.</p>
           </article>
         </div>
 
-        <h3 class="subsection-title">Awareness &amp; Sustainability Initiatives</h3>
+        <h3 class="subsection-title" data-fr="Sensibilisation &amp;amp; développement durable">Awareness &amp; Sustainability Initiatives</h3>
         <div class="timeline">
           <article class="timeline-item">
-            <h4>Climate Fresk Workshop</h4>
-            <p>Early in my engineering program, I took part in a collaborative Climate Fresk session with my classmates. This experience made us aware of the scale of the ongoing environmental crisis and of the climate challenges we will have to tackle as future engineers.</p>
+            <h4 data-fr="Atelier Fresque du Climat">Climate Fresk Workshop</h4>
+            <p data-fr="Au début de ma formation, j&#x27;ai participé à une Fresque du Climat avec ma promotion. Cette expérience nous a fait prendre conscience de l&#x27;ampleur de la crise environnementale actuelle et des défis climatiques que nous aurons à relever en tant que futurs ingénieurs.">Early in my engineering program, I took part in a collaborative Climate Fresk session with my classmates. This experience made us aware of the scale of the ongoing environmental crisis and of the climate challenges we will have to tackle as future engineers.</p>
           </article>
           <article class="timeline-item">
-            <h4>'The Trial of King Kong' Interactive Play</h4>
-            <p>I also took part in this interactive theater performance addressing gender-based and sexual violence (GBV). It was a valuable opportunity to understand the severe consequences of such violence and the importance of promoting a respectful environment.</p>
+            <h4 data-fr="Pièce interactive « Le Procès de King Kong »">'The Trial of King Kong' Interactive Play</h4>
+            <p data-fr="J&#x27;ai aussi participé à ce spectacle de théâtre interactif sur les violences sexistes et sexuelles (VSS). Ce fut l&#x27;occasion de mieux comprendre les graves conséquences de ces violences et l&#x27;importance de promouvoir un environnement respectueux.">I also took part in this interactive theater performance addressing gender-based and sexual violence (GBV). It was a valuable opportunity to understand the severe consequences of such violence and the importance of promoting a respectful environment.</p>
           </article>
           <article class="timeline-item">
-            <h4>'Futur Proche' Festival</h4>
-            <p>Thanks to ENSEEIHT and the Toulouse university network, I took part in the 'Futur Proche' (Near Future) festival. Through conferences and workshops, I explored climate issues from a scientific perspective and discovered technological innovations designed to build a more sustainable world.</p>
+            <h4 data-fr="Festival « Futur Proche »">'Futur Proche' Festival</h4>
+            <p data-fr="Grâce à l&#x27;ENSEEIHT et au réseau universitaire toulousain, j&#x27;ai participé au festival « Futur Proche ». À travers des conférences et des ateliers, j&#x27;ai abordé les enjeux climatiques sous un angle scientifique et découvert des innovations technologiques pensées pour construire un monde plus durable.">Thanks to ENSEEIHT and the Toulouse university network, I took part in the 'Futur Proche' (Near Future) festival. Through conferences and workshops, I explored climate issues from a scientific perspective and discovered technological innovations designed to build a more sustainable world.</p>
           </article>
         </div>
       </div>
@@ -220,37 +257,37 @@
     <!-- ===================== 5. SPORTS & OTHER ACTIVITIES ===================== -->
     <section id="activities" class="section">
       <div class="container">
-        <h2 class="section-title">Sports &amp; Other Activities</h2>
-        <p class="lead">Extracurricular activities and personal interests play a major role in my daily life, helping me develop essential soft skills that complement my engineering studies.</p>
+        <h2 class="section-title" data-fr="Sports &amp;amp; autres activités">Sports &amp; Other Activities</h2>
+        <p class="lead" data-fr="Les activités extrascolaires et mes centres d&#x27;intérêt occupent une place importante dans mon quotidien et m&#x27;aident à développer des savoir-être essentiels, en complément de ma formation d&#x27;ingénieur.">Extracurricular activities and personal interests play a major role in my daily life, helping me develop essential soft skills that complement my engineering studies.</p>
 
         <div class="card-grid two-cols">
           <article class="card activity">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-45 12 12)"/><path d="m9 15 6-6M10 11l3 3M12 9l3 3M8 13l3 3"/></svg>
             </div>
-            <h3>University Rugby Player</h3>
-            <p>Since September 2026, I have been playing for the INP Toulouse university rugby team. This regular competitive practice has strengthened my team spirit and my ability to manage stress and stay focused under pressure.</p>
+            <h3 data-fr="Joueur de rugby universitaire">University Rugby Player</h3>
+            <p data-fr="Depuis septembre 2026, je joue dans l&#x27;équipe de rugby universitaire de l&#x27;INP Toulouse. Cette pratique régulière en compétition a renforcé mon esprit d&#x27;équipe et ma capacité à gérer le stress et à rester concentré sous pression.">Since September 2026, I have been playing for the INP Toulouse university rugby team. This regular competitive practice has strengthened my team spirit and my ability to manage stress and stay focused under pressure.</p>
           </article>
           <article class="card activity">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 13c2 0 2-1.5 4-1.5S8 13 10 13s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><circle cx="16" cy="6" r="2"/></svg>
             </div>
-            <h3>Other Sports</h3>
-            <p>In addition to rugby, I maintain a healthy and balanced lifestyle by swimming and playing recreational soccer.</p>
+            <h3 data-fr="Autres sports">Other Sports</h3>
+            <p data-fr="En plus du rugby, je garde un mode de vie sain et équilibré en pratiquant la natation et le football en loisir.">In addition to rugby, I maintain a healthy and balanced lifestyle by swimming and playing recreational soccer.</p>
           </article>
           <article class="card activity">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M8 21h8M9 17h6l1 4H8l1-4zM12 3v3M10.5 4.5h3M9 17c0-3 1-5 1-7a2 2 0 1 1 4 0c0 2 1 4 1 7"/></svg>
             </div>
-            <h3>Chess</h3>
-            <p>I play chess online regularly. This strategy game helps me sharpen my focus, patience and analytical thinking.</p>
+            <h3 data-fr="Échecs">Chess</h3>
+            <p data-fr="Je joue régulièrement aux échecs en ligne. Ce jeu de stratégie m&#x27;aide à développer ma concentration, ma patience et mon esprit d&#x27;analyse.">I play chess online regularly. This strategy game helps me sharpen my focus, patience and analytical thinking.</p>
           </article>
           <article class="card activity">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 7c-4 0-7 3-7 7s3 7 7 7 7-3 7-7-3-7-7-7zM12 7c0-2 1-4 3-5M12 7c-1-2-3-2.5-5-2"/></svg>
             </div>
-            <h3>Summer Employment</h3>
-            <p>During the summers of 2024 and 2026, I worked as a seasonal agricultural worker at Château Binest. Harvesting and packaging fruit at a fast pace taught me the value of rigor, punctuality and hard work within a team.</p>
+            <h3 data-fr="Jobs d&#x27;été">Summer Employment</h3>
+            <p data-fr="Pendant les étés 2024 et 2026, j&#x27;ai travaillé comme saisonnier agricole au Château Binest. Récolter et conditionner des fruits à un rythme soutenu m&#x27;a appris la rigueur, la ponctualité et l&#x27;effort au sein d&#x27;une équipe.">During the summers of 2024 and 2026, I worked as a seasonal agricultural worker at Château Binest. Harvesting and packaging fruit at a fast pace taught me the value of rigor, punctuality and hard work within a team.</p>
           </article>
         </div>
       </div>
@@ -259,25 +296,25 @@
     <!-- ===================== 6. CAREER DEVELOPMENT ===================== -->
     <section id="career" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Career Development</h2>
-        <p class="lead">I am currently seeking a 6-week internship in electronics, starting in June 2027, to discover the industrial sector. Below, you can access my professional documents and watch my video pitch to learn more about my background, my career goals, my role models and my mobility projects.</p>
+        <h2 class="section-title" data-fr="Projet professionnel">Career Development</h2>
+        <p class="lead" data-fr="Je recherche actuellement un stage de 6 semaines en électronique, à partir de juin 2027, pour découvrir le monde industriel. Vous trouverez ci-dessous mes documents professionnels ainsi que ma vidéo de présentation, pour en savoir plus sur mon parcours, mes objectifs professionnels, mes modèles et mes projets de mobilité.">I am currently seeking a 6-week internship in electronics, starting in June 2027, to discover the industrial sector. Below, you can access my professional documents and watch my video pitch to learn more about my background, my career goals, my role models and my mobility projects.</p>
 
         <div class="career-grid">
           <div class="career-actions">
             <!-- PDF LINK (EN): replace href with the path/URL of your English CV -->
             <a href="Mathieu%20Borsato%20CV%20EN.pdf" class="btn btn-primary btn-block" download>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-              Download CV (EN)
+              <span data-fr="Télécharger le CV (EN)">Download CV (EN)</span>
             </a>
             <!-- PDF LINK (FR): replace href with the path/URL of your French CV -->
             <a href="Mathieu%20Borsato%20CV%20FR.pdf" class="btn btn-primary btn-block" download>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-              Télécharger CV (FR)
+              <span data-fr="Télécharger le CV (FR)">Télécharger CV (FR)</span>
             </a>
             <!-- LINKEDIN LINK: replace href if your profile URL changes -->
             <a href="https://www.linkedin.com/in/mathieu-borsato" class="btn btn-outline btn-block" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v2c.6-1.1 2-2.2 4-2.2 3.5 0 4 2.3 4 5.2v7h-4v-6c0-1.5 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V21h-4z"/></svg>
-              LinkedIn Profile
+              <span data-fr="Profil LinkedIn">LinkedIn Profile</span>
             </a>
           </div>
 
@@ -292,26 +329,26 @@
         </div>
 
         <!-- Role models -->
-        <h3 class="subsection-title">My Role Models</h3>
-        <p class="lead">To shape my career path, I studied the journeys of three engineers. Each of them is linked to one of my international mobility projects.</p>
+        <h3 class="subsection-title" data-fr="Mes modèles">My Role Models</h3>
+        <p class="lead" data-fr="Pour construire mon projet professionnel, j&#x27;ai étudié le parcours de trois ingénieurs. Chacun d&#x27;eux est lié à l&#x27;un de mes projets de mobilité internationale.">To shape my career path, I studied the journeys of three engineers. Each of them is linked to one of my international mobility projects.</p>
         <div class="card-grid three-cols">
           <article class="card">
             <h4>Laurent Rossi</h4>
-            <p><strong>N7 graduate · Former CEO of Alpine &amp; Alpine F1 Team</strong></p>
-            <p>After graduating from ENSEEIHT in 1999, he earned an MBA at Harvard and went on to lead Alpine and its Formula 1 team. He shows me that an N7 degree can open doors anywhere in the world, and that strong engineering foundations can lead to leadership roles.</p>
-            <p><strong>Linked mobility, plan A:</strong> a semester in the United States.</p>
+            <p data-fr="&lt;strong&gt;Diplômé de l&#x27;N7 · Ancien directeur général d&#x27;Alpine et de l&#x27;écurie Alpine F1&lt;/strong&gt;"><strong>N7 graduate · Former CEO of Alpine &amp; Alpine F1 Team</strong></p>
+            <p data-fr="Diplômé de l&#x27;ENSEEIHT en 1999, il a ensuite obtenu un MBA à Harvard avant de diriger Alpine et son écurie de Formule 1. Il me montre qu&#x27;un diplôme de l&#x27;N7 peut ouvrir des portes partout dans le monde, et que de solides bases d&#x27;ingénieur peuvent mener à des postes de direction.">After graduating from ENSEEIHT in 1999, he earned an MBA at Harvard and went on to lead Alpine and its Formula 1 team. He shows me that an N7 degree can open doors anywhere in the world, and that strong engineering foundations can lead to leadership roles.</p>
+            <p data-fr="&lt;strong&gt;Mobilité associée, plan A :&lt;/strong&gt; un semestre aux États-Unis."><strong>Linked mobility, plan A:</strong> a semester in the United States.</p>
           </article>
           <article class="card">
             <h4>Mike Lazaridis</h4>
-            <p><strong>Co-founder of Research In Motion (BlackBerry)</strong></p>
-            <p>He studied electrical engineering at the University of Waterloo in Canada, a university known for combining classes with work experience, and co-founded the company behind the BlackBerry. He inspires me because he turned technical knowledge into a real product.</p>
-            <p><strong>Linked mobility, plan B:</strong> a semester in Canada, to experience this hands-on approach to engineering.</p>
+            <p data-fr="&lt;strong&gt;Cofondateur de Research In Motion (BlackBerry)&lt;/strong&gt;"><strong>Co-founder of Research In Motion (BlackBerry)</strong></p>
+            <p data-fr="Il a étudié le génie électrique à l&#x27;Université de Waterloo, au Canada, une université connue pour associer cours et expérience en entreprise, et a cofondé l&#x27;entreprise à l&#x27;origine du BlackBerry. Il m&#x27;inspire parce qu&#x27;il a su transformer des connaissances techniques en un véritable produit.">He studied electrical engineering at the University of Waterloo in Canada, a university known for combining classes with work experience, and co-founded the company behind the BlackBerry. He inspires me because he turned technical knowledge into a real product.</p>
+            <p data-fr="&lt;strong&gt;Mobilité associée, plan B :&lt;/strong&gt; un semestre au Canada, pour découvrir cette approche très concrète de l&#x27;ingénierie."><strong>Linked mobility, plan B:</strong> a semester in Canada, to experience this hands-on approach to engineering.</p>
           </article>
           <article class="card">
             <h4>Martin Green</h4>
-            <p><strong>Professor at UNSW Sydney · Inventor of the PERC solar cell</strong></p>
-            <p>This Australian engineer invented the PERC solar cell, the technology behind most solar panels produced today. He proves that electrical engineers can have a huge impact on the climate challenge, a cause I care about.</p>
-            <p><strong>Linked mobility, plan C:</strong> a semester in Australia, to explore renewable energy.</p>
+            <p data-fr="&lt;strong&gt;Professeur à l&#x27;UNSW Sydney · Inventeur de la cellule solaire PERC&lt;/strong&gt;"><strong>Professor at UNSW Sydney · Inventor of the PERC solar cell</strong></p>
+            <p data-fr="Cet ingénieur australien a inventé la cellule solaire PERC, la technologie utilisée dans la plupart des panneaux solaires produits aujourd&#x27;hui. Il prouve que les ingénieurs électriciens peuvent avoir un impact majeur face au défi climatique, une cause qui me tient à cœur.">This Australian engineer invented the PERC solar cell, the technology behind most solar panels produced today. He proves that electrical engineers can have a huge impact on the climate challenge, a cause I care about.</p>
+            <p data-fr="&lt;strong&gt;Mobilité associée, plan C :&lt;/strong&gt; un semestre en Australie, pour explorer les énergies renouvelables."><strong>Linked mobility, plan C:</strong> a semester in Australia, to explore renewable energy.</p>
           </article>
         </div>
       </div>
@@ -326,5 +363,28 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // ===================== LANGUAGE SWITCH (EN by default) =====================
+    (function () {
+      var select = document.getElementById("langSelect");
+      var titles = { en: "Mathieu Borsato | E-Portfolio", fr: "Mathieu Borsato | E-Portfolio" };
+      var textEls = document.querySelectorAll("[data-fr]");
+      var altEls = document.querySelectorAll("[data-fr-alt]");
+      textEls.forEach(function (el) { el.setAttribute("data-en", el.innerHTML); });
+      altEls.forEach(function (el) { el.setAttribute("data-en-alt", el.getAttribute("alt")); });
+
+      function setLang(lang) {
+        textEls.forEach(function (el) { el.innerHTML = el.getAttribute(lang === "fr" ? "data-fr" : "data-en"); });
+        altEls.forEach(function (el) { el.setAttribute("alt", el.getAttribute(lang === "fr" ? "data-fr-alt" : "data-en-alt")); });
+        document.documentElement.lang = lang;
+        document.title = titles[lang];
+        select.value = lang;
+      }
+
+      select.addEventListener("change", function () { setLang(select.value); });
+      // A link ending with ?lang=fr opens the French version directly; otherwise English
+      if (/[?&]lang=fr\b/.test(location.search)) setLang("fr"); else setLang("en");
+    })();
+  </script>
 </body>
 </html>
